@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_10_01_190708) do
     t.string "headline", null: false
     t.text "content", null: false
     t.string "picture", default: "https://raw.githubusercontent.com/do-community/react_rails_recipe/master/app/assets/images/Sammy_Meal.jpg"
-    t.integer "topic_id"
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

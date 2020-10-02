@@ -4,7 +4,7 @@ class CreateBlogs < ActiveRecord::Migration[6.0]
       t.string :headline, null: false
       t.text :content, null: false
       t.string :picture, default: 'https://raw.githubusercontent.com/do-community/react_rails_recipe/master/app/assets/images/Sammy_Meal.jpg'
-      t.integer :topic_id
+      t.integer :category_id
 
       t.timestamps
     end

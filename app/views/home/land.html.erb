@@ -1,0 +1,38 @@
+<div class="vw-100 vh-100 primary-color d-flex align-items-center justify-content-center">
+  <div class="jumbotron jumbotron-fluid bg-transparent">
+    <div class="container secondary-color">
+      <h1 class="display-4">The Bachelors Guide</h1>
+        <p class="lead">
+          A collection of recipies, stories and reccomendations.
+        </p>
+
+        <a>
+          <%= link_to home_index_path, class: "btn btn-lg custom-button" do %>
+          Enter <span class="sr-only">(current)</span>
+          <% end %>
+        </a>
+
+      </div>
+    </div>
+  </div>
+  <!-- Side category index -->
+  <div class="col-md-4">
+  <div class="card mt-3">
+    <div class="card-header">
+      Categories
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <% @categories.each do |category| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= link_to category.category, blogs_path(:cate => category.id) %>
+          <span class="badge badge-primary badge-pill"><%= category.blogs.count %></span>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <li class="btn">
+      <%= link_to "Reset filter", blogs_path, class: 'nav-link' %>
+    </li>
+  </div>
+  </div>

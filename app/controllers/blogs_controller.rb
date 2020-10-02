@@ -1,34 +1,42 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   # GET /blogs
   # GET /blogs.json
   def index
-    @blogs = Blog.all
-    @categories = Category.all
-  end
+      @categories = Category.all
+
+      cate = params[:cate]
+
+      if !cate.nil?
+        @blogs = Blog.where(:category_id => cate)
+      else
+      @blogs = Blog.all
+      end
+
+
+    end
 
   # GET /blogs/1
   # GET /blogs/1.json
   def show
+    @blog =Blog.find(params[:id])
   end
 
   # GET /blogs/new
   def new
     @blog = Blog.new
-    @category = Category.new
   end
 
   # GET /blogs/1/edit
   def edit
+    @blog =Blog.find(params[:id])
   end
 
   # POST /blogs
   # POST /blogs.json
   def create
     @blog = Blog.new(blog_params)
-    @topic = Topic.new(topic_params)
 
     respond_to do |format|
       if @blog.save
@@ -37,15 +45,6 @@ class BlogsController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @blog.errors, status: :unprocessable_entity }
-      end
-    end
-    respond_to do |format|
-      if @topic.save
-        format.html { redirect_to @topic, notice: 'Topic was successfully created.' }
-        format.json { render :show, status: :created, location: @topic }
-      else
-        format.html { render :new }
-        format.json { render json: @topic.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -83,14 +82,5 @@ class BlogsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def blog_params
       params.require(:blog).permit(:headline, :content, :picture, :category_id)
-    end
-    # Use callbacks to share common setup or constraints between actions.
-    def set_category
-      @category = Category.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def category_params
-      params.require(:category).permit(:category)
     end
 end
