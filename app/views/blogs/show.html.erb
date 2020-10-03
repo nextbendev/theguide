@@ -1,24 +1,24 @@
-<p id="notice"><%= notice %></p>
+<!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
+        <!-- Title -->
+        <h1 class="mt-4"><%= @blog.headline %></h1>
+        <%= link_to 'Edit', edit_blog_path(@blog) %> |
+        <%= link_to 'Back', blogs_path %>
+        <!-- Date/Time -->
+        <p><%= @blog.created_at %></p>
+        <hr>
+        <!-- Preview Image -->
+        <%= image_tag @blog.picture, class: "rounded-lg" %>
 
-<p>
-  <strong>Headline:</strong>
-  <%= @blog.headline %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @blog.content %>
-</p>
-
-<p>
-  <strong>Picture:</strong>
-  <%= @blog.picture %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @blog.category_id %>
-</p>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+        <hr>
+        <!-- Post Content -->
+        <p class="lead"><%= @blog.content %></p>
+        <hr>
+      </div>
+    </div>
+  </div>
+  </br></br></br></br>
+</br></br>
