@@ -1,5 +1,24 @@
+<p class="small-print fixed-bottom py-0">
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+
+  <a class="nav-item">
+
+    <%= link_to categories_path, class: "nav-link" do %>
+    <i class="fas fa-blog"></i> cate <span class="sr-only">(current)</span>
+    <% end %>
+    <%= link_to 'New Blog', new_blog_path %>
+  </a>
+<% else %>
 <div class="small-print fixed-bottom py-0">
   <div class="container ">
     <p>&copy; Gastronomic 2020 </p>
   </div>
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 </div>
+
+<% end %>
+</p>

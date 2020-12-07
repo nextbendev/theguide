@@ -1,7 +1,11 @@
 <%= render 'blox/jumbo' %>
 <%= render 'blox/navbar' %>
 
+<% if logged_in? %>
 
+<% else %>
+  # Links for non-logged-in-users
+<% end %>
 
 <%= radio_button_tag(:age, "child") %>
 <%= label_tag(:age_child, "I am younger than 21") %>
